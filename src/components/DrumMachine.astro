@@ -1,0 +1,28 @@
+---
+import DrumPad from "./DrumPad.astro";
+---
+
+<article
+  id="drum-machine"
+  class="grid grid-rows-3 grid-cols-3 rounded-lg w-3/4 h-[500px] min-w-[350px] p-4 my-4 max-w-[500px]"
+>
+  <!-- <div class="display">dont know why for</div> -->
+  <DrumPad leter="q" sound="./audio/Cev_H2.mp3" />
+  <DrumPad leter="w" sound="./audio/Dsc_Oh.mp3" />
+  <DrumPad leter="e" sound="./audio/Heater-1.mp3" />
+
+  <DrumPad leter="a" sound="./audio/Heater-2.mp3" />
+  <DrumPad leter="s" sound="./audio/Heater-3.mp3" />
+  <DrumPad leter="d" sound="./audio/Heater-4_1.mp3" />
+
+  <DrumPad leter="z" sound="./audio/Heater-6.mp3" />
+  <DrumPad leter="x" sound="./audio/Kick_n_Hat.mp3" />
+  <DrumPad leter="c" sound="./audio/RP4_KICK_1.mp3" />
+</article>
+
+<style>
+  #drum-machine {
+    
+
+  }
+</style>

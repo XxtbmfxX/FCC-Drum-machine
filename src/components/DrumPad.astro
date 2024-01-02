@@ -1,0 +1,61 @@
+---
+interface Props {
+  leter: string;
+  sound: string;
+}
+
+const { leter = "a", sound = "" } = Astro.props;
+---
+
+<div
+  class={`drum-pad drum-pad-${leter} cursor-pointer rounded-lg border-4 border-blue-500 border-opacity-50  text-center flex justify-center items-center select-none max-w-32 max-h-32 shadow-xl `}
+>
+  <audio id={leter} src={sound}></audio>
+  <p class="box">
+    {leter.toUpperCase()}
+  </p>
+</div>
+
+
+<style>
+
+  .bg-shadow{
+    box-shadow: 3px 3px 28px 10px rgba(236,88,88,0.75);
+-webkit-box-shadow: 3px 3px 28px 10px rgba(236,88,88,0.75);
+-moz-box-shadow: 3px 3px 28px 10px rgba(236,88,88,0.75);
+  }
+  
+</style>
+
+<script>
+  const pressedClass = " bg-shadow bg-red-500 text-white";
+
+  $(document).on("keydown", function (e) {
+    const key = String.fromCharCode(e.keyCode);
+    const audio = $(this).find(`#${key.toLocaleLowerCase()}`);
+    const pad = $(this).find(`.drum-pad-${key.toLocaleLowerCase()}`);
+
+    pad.addClass(pressedClass);
+
+    setTimeout(() => {
+      pad.removeClass(pressedClass);
+    }, 100);
+
+    audio[0].play();
+  });
+
+  $(".drum-pad").on("click", function (e) {
+    const audio = $(this).find("audio");
+    const key = e.target.innerText.toLocaleLowerCase();
+    const pad = $(document).find(`.drum-pad-${key}`);
+
+    pad.addClass(pressedClass);
+
+    setTimeout(() => {
+      pad.removeClass(pressedClass);
+    }, 100);
+
+    audio[0].play();
+  });
+</script>
+
